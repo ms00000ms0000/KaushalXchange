@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/aleo_extralight</item>
+        <item>@font/alike_angular</item>
+        <item>@font/alkalami</item>
+        <item>@font/antic_slab</item>
+        <item>@font/bellota_text</item>
+        <item>@font/calistoga</item>
+        <item>@font/crimson_text</item>
+        <item>@font/hanuman</item>
+        <item>@font/kurale</item>
+        <item>@font/merriweather</item>
+        <item>@font/roboto</item>
+        <item>@font/roboto_bold</item>
+    </array>
+</resources>

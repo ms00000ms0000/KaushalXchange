@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/logo_kx_original"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo_kx_original"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.KaushalXchange"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".MyConnectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MySkillsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SkillICanTeachActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AssessmentActivityJS"
+            android:exported="false" />
+        <activity
+            android:name=".JSModulesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AssessmentActivityCss"
+            android:exported="false" />
+        <activity
+            android:name=".CssModulesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AssessmentActivityHtml"
+            android:exported="false" />
+        <activity
+            android:name=".HtmlModulesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CModulesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AssessmentActivityC"
+            android:exported="false" />
+        <activity
+            android:name=".AssessmentActivityJava"
+            android:exported="false" />
+        <activity
+            android:name=".JavaModulesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyLearningWishlist"
+            android:exported="false" />
+        <activity
+            android:name=".AboutUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ShareActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContactUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TermsAndConditionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FeedbackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FavouriteTutorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LikedSkillsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OngoingCoursesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AssessmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PythonModulesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomList"
+            android:exported="false" />
+        <activity
+            android:name=".TestSkill"
+            android:exported="false" />
+        <activity
+            android:name=".Rvaddskill"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LogIn"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
+            android:name=".Signup"
+            android:exported="false" />
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

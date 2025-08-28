@@ -1,0 +1,53 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/detailName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Skill Name"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@android:color/black" />
+
+        <ImageView
+            android:id="@+id/detailImage"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:src="@drawable/python"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Start Modules Button -->
+        <Button
+            android:id="@+id/startModulesBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/app_color"
+            android:text="Start Learning Modules"
+            android:textColor="@color/black" />
+
+        <!-- Final Assessment Button -->
+        <Button
+            android:id="@+id/startAssessmentBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/app_color"
+            android:text="Start Final Assessment"
+            android:textColor="@color/black" />
+    </LinearLayout>
+</ScrollView>
