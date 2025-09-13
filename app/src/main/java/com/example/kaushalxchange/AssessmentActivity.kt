@@ -1,8 +1,7 @@
 package com.example.kaushalxchange
 
 import android.content.DialogInterface
-import android.content.Intent
-import android.content.SharedPreferences // <-- added
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.Button
@@ -19,16 +18,14 @@ class AssessmentActivity : AppCompatActivity() {
     private lateinit var timerText: TextView
     private lateinit var countDownTimer: CountDownTimer
     private val userAnswers = IntArray(25) { -1 }
-    private var isSubmitted = false   // <-- new flag
-    private lateinit var sharedPreferences: SharedPreferences // <-- added
+    private var isSubmitted = false
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_assessment)
 
-        // <-- added SharedPreferences
         sharedPreferences = getSharedPreferences("KaushalXChangePrefs", MODE_PRIVATE)
-
         questions = loadQuestions()
 
         val recyclerView = findViewById<RecyclerView>(R.id.questionRecyclerView)
@@ -36,7 +33,7 @@ class AssessmentActivity : AppCompatActivity() {
         val submitBtn = findViewById<Button>(R.id.submitBtn)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-        questionAdapter = QuestionAdapter(questions, userAnswers, ::isSubmitted) // pass flag
+        questionAdapter = QuestionAdapter(questions, userAnswers, ::isSubmitted)
         recyclerView.adapter = questionAdapter
 
         startTimer()
@@ -44,7 +41,7 @@ class AssessmentActivity : AppCompatActivity() {
         submitBtn.setOnClickListener {
             evaluateAnswers()
             isSubmitted = true
-            questionAdapter.notifyDataSetChanged() // refresh to show colors
+            questionAdapter.notifyDataSetChanged()
         }
     }
 
@@ -73,9 +70,8 @@ class AssessmentActivity : AppCompatActivity() {
             }
         }
 
-        // <-- New logic for My Skills and Skill I Can Teach
         val editor = sharedPreferences.edit()
-        val skillName = "Python" // later you can make dynamic per skill
+        val skillName = "Python"
 
         if (score >= 15) {
             addSkillToList("MySkills", skillName)
@@ -93,7 +89,6 @@ class AssessmentActivity : AppCompatActivity() {
             .show()
     }
 
-    // <-- helper function to add skills in SharedPreferences list
     private fun addSkillToList(key: String, skill: String) {
         val skillsSet = sharedPreferences.getStringSet(key, mutableSetOf())?.toMutableSet() ?: mutableSetOf()
         skillsSet.add(skill)

@@ -36,9 +36,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:backgroundTint="@color/app_color"
+            android:backgroundTint="@color/teal_700"
+            android:textColor="@color/white"
             android:text="Start Learning Modules"
-            android:textColor="@color/black" />
+             />
 
         <!-- Final Assessment Button -->
         <Button
@@ -46,8 +47,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:backgroundTint="@color/app_color"
+            android:backgroundTint="@color/teal_700"
+            android:textColor="@color/white"
             android:text="Start Final Assessment"
-            android:textColor="@color/black" />
+              />
     </LinearLayout>
 </ScrollView>

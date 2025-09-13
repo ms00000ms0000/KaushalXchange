@@ -5,10 +5,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SkillICanTeachActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var skillAdapter: SkillAdapter
 
     private val nameList = arrayOf(
         "Python", "Java", "C", "HTML", "CSS",
@@ -27,19 +31,77 @@ class SkillICanTeachActivity : AppCompatActivity() {
         R.drawable.canva
     )
 
+    private val skillsList = mutableListOf<Skill>()
+
+    private val firestore = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_skill_ican_teach)
 
         sharedPreferences = getSharedPreferences("KaushalXChangePrefs", MODE_PRIVATE)
-        val skillsSet = sharedPreferences.getStringSet("SkillsICanTeach", emptySet()) ?: emptySet()
 
-        val skillsList = nameList.mapIndexedNotNull { index, name ->
-            if (skillsSet.contains(name)) Skill(name, imageList[index]) else null
+        //  Clear preferences if user is new (UID changed)
+        val uid = auth.currentUser?.uid
+        if (uid != null && sharedPreferences.getString("lastUid", "") != uid) {
+            sharedPreferences.edit().clear().putString("lastUid", uid).apply()
         }
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewSkillICanTeach)
+        recyclerView = findViewById(R.id.recyclerViewSkillICanTeach)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = SkillAdapter(skillsList)
+        skillAdapter = SkillAdapter(skillsList)
+        recyclerView.adapter = skillAdapter
+
+        loadLocalSkills()
+        loadFirebaseSkills()
+        syncTeachSkillsToFirestore()
+    }
+
+    private fun loadLocalSkills() {
+        val skillsSet = sharedPreferences.getStringSet("SkillsICanTeach", emptySet()) ?: emptySet()
+        skillsList.clear()
+
+        // For new users, list is empty
+        nameList.forEachIndexed { index, name ->
+            if (skillsSet.contains(name)) {
+                skillsList.add(Skill(name, imageList[index]))
+            }
+        }
+        skillAdapter.notifyDataSetChanged()
+    }
+
+    private fun loadFirebaseSkills() {
+        val uid = auth.currentUser?.uid ?: return
+        firestore.collection("users").document(uid)
+            .get()
+            .addOnSuccessListener { document ->
+                val firebaseSkills = document.get("skills_can_teach") as? List<String> ?: emptyList()
+                skillsList.clear()
+
+                // Only show unlocked skills
+                nameList.forEachIndexed { index, name ->
+                    if (firebaseSkills.contains(name)) {
+                        skillsList.add(Skill(name, imageList[index]))
+                    }
+                }
+                skillAdapter.notifyDataSetChanged()
+            }
+    }
+
+    private fun syncTeachSkillsToFirestore() {
+        val uid = auth.currentUser?.uid ?: return
+        val displayName = auth.currentUser?.displayName ?: "Unknown"
+
+        val skillsSet = sharedPreferences.getStringSet("SkillsICanTeach", emptySet()) ?: emptySet()
+
+        val data = mapOf(
+            "uid" to uid,
+            "displayName" to displayName,
+            "skills_can_teach" to skillsSet.toList()
+        )
+
+        //  Overwrite completely to avoid old data
+        firestore.collection("users").document(uid).set(data)
     }
 }

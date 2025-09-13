@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="6dp"
+    android:layout_margin="6dp">
+
+    <!-- Text Message -->
+    <TextView
+        android:id="@+id/messageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Message"
+        android:textSize="16sp"
+        android:padding="8dp"
+        android:textColor="@android:color/black"
+        android:visibility="gone" />
+
+    <!-- File Message -->
+    <LinearLayout
+        android:id="@+id/fileLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/fileNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="File"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="16sp"
+            android:padding="4dp" />
+    </LinearLayout>
+
+    <!-- Image Preview -->
+    <ImageView
+        android:id="@+id/imagePreview"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        android:layout_marginTop="4dp" />
+
+    <!-- Video Preview -->
+    <ImageView
+        android:id="@+id/videoPreview"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        android:layout_marginTop="4dp" />
+
+    <!-- Timestamp -->
+    <TextView
+        android:id="@+id/timestampText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginTop="4dp" />
+
+
+
+</LinearLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="@android:color/white"
+    android:elevation="2dp"
+    android:layout_margin="6dp">
+
+    <!-- Header Row with Name -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/course_person_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:includeFontPadding="true"
+            android:ellipsize="none"
+            android:singleLine="false"
+            android:lineSpacingExtra="2dp"
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
+
+    <!-- Skills want to learn -->
+    <TextView
+        android:id="@+id/course_skill_learn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="2dp"
+        android:textSize="14sp"
+        android:includeFontPadding="true"
+        android:ellipsize="none"
+        android:singleLine="false"
+        android:textColor="@android:color/black"/>
+
+    <!-- Skills can teach -->
+    <TextView
+        android:id="@+id/course_skills_offer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:textSize="14sp"
+        android:includeFontPadding="true"
+        android:ellipsize="none"
+        android:singleLine="false"
+        android:textColor="@android:color/black" />
+
+    <!-- Buttons Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/teal_700"
+            android:textColor="@color/white"
+            android:text="Start" />
+
+        <Button
+            android:id="@+id/btn_quit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quit"
+            android:backgroundTint="@color/teal_700"
+            android:textColor="@color/white"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+</LinearLayout>

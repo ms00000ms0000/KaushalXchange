@@ -12,7 +12,8 @@
     <!-- Notifications -->
     <item
         android:id="@+id/action_notifications"
-        android:icon="@drawable/ic_notifications"
         android:title="Notifications"
-        app:showAsAction="ifRoom" />
+        android:icon="@drawable/ic_notifications"
+        app:showAsAction="always" />
+
 </menu>

@@ -45,11 +45,14 @@ class Signup : AppCompatActivity() {
                         if (task.isSuccessful) {
                             val userId = auth.currentUser!!.uid
 
-                            // Save to Firestore
+                            // Save to Firestore (consistent with other modules)
                             val userMap = hashMapOf(
-                                "username" to userName,
+                                "uid" to userId,
+                                "displayName" to userName,
                                 "email" to email,
-                                "profileImageUrl" to "" // empty initially
+                                "profileImageUrl" to "",
+                                "skills_can_teach" to emptyList<String>(),
+                                "skills_want_to_learn" to emptyList<String>()
                             )
                             Firebase.firestore.collection("users").document(userId)
                                 .set(userMap)

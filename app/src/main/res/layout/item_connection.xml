@@ -12,14 +12,15 @@
         android:layout_height="wrap_content"
         android:padding="12dp">
 
-        <!-- Chat Icon -->
+        <!-- Cross Icon (remove) -->
         <ImageView
-            android:id="@+id/chatIcon"
+            android:id="@+id/removeIcon"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_message"
-              />
+            android:src="@drawable/gph_ic_close"
+            android:padding="6dp"
+            android:contentDescription="Remove connection" />
 
         <!-- Profile Picture -->
         <ImageView
@@ -33,18 +34,34 @@
             android:scaleType="centerCrop"
             android:src="@drawable/profile" />
 
-        <!-- User Name -->
-        <TextView
-            android:id="@+id/userName"
+        <!-- User Name with Chat Icon next to it -->
+        <LinearLayout
+            android:id="@+id/nameWithChat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/profileImage"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
-            android:text="@string/user_name"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_name"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/chatIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_message"
+                android:contentDescription="Chat" />
+        </LinearLayout>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

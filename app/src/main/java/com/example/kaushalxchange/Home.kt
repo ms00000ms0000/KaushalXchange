@@ -84,7 +84,7 @@ class Home : AppCompatActivity() {
             val userRef = firestore.collection("users").document(it.uid)
             userRef.get().addOnSuccessListener { document ->
                 if (document.exists()) {
-                    headerUsername.text = document.getString("username") ?: "User"
+                    headerUsername.text = document.getString("displayName") ?: "User"
                     val profileImageUrl = document.getString("profileImageUrl")
                     if (!profileImageUrl.isNullOrEmpty()) {
                         Glide.with(this).load(profileImageUrl).into(headerProfileImage)
@@ -107,7 +107,6 @@ class Home : AppCompatActivity() {
                 R.id.navCourses -> startActivity(Intent(this, OngoingCoursesActivity::class.java))
                 R.id.navLiked -> startActivity(Intent(this, LikedSkillsActivity::class.java))
                 R.id.navFavourites -> startActivity(Intent(this, FavouriteTutorActivity::class.java))
-
                 R.id.navFeedback -> startActivity(Intent(this, FeedbackActivity::class.java))
                 R.id.navTerms -> startActivity(Intent(this, TermsAndConditionsActivity::class.java))
                 R.id.navContact -> startActivity(Intent(this, ContactUsActivity::class.java))
@@ -121,14 +120,12 @@ class Home : AppCompatActivity() {
                 }
                 R.id.navAbout -> startActivity(Intent(this, AboutUsActivity::class.java))
                 R.id.navLogout -> {
-                    firebaseAuth.signOut() // Sign out from Firebase
-
+                    firebaseAuth.signOut()
                     val intent = Intent(this, LogIn::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
-                    finish() // finish Home activity so it can't be accessed by back button
+                    finish()
                 }
-
             }
             binding.drawerLayout.closeDrawers()
             true
@@ -138,6 +135,9 @@ class Home : AppCompatActivity() {
         binding.exploreButton.setOnClickListener {
             startActivity(Intent(this, CustomList::class.java))
         }
+        binding.matchButton.setOnClickListener {
+            startActivity(Intent(this, FindMatchActivity::class.java))
+        }
         binding.myconnectionButton.setOnClickListener {
             startActivity(Intent(this, MyConnectionActivity::class.java))
         }
@@ -146,6 +146,12 @@ class Home : AppCompatActivity() {
         }
         binding.myskillsButton.setOnClickListener {
             startActivity(Intent(this, MySkillsActivity::class.java))
+        }
+        binding.activeCoursesButton.setOnClickListener {
+            startActivity(Intent(this, ActiveCourses::class.java))
+        }
+        binding.skillAcquiredButton.setOnClickListener {
+            startActivity(Intent(this, AcquiredSkills::class.java))
         }
         binding.teachButton.setOnClickListener {
             startActivity(Intent(this, SkillICanTeachActivity::class.java))
@@ -194,7 +200,7 @@ class Home : AppCompatActivity() {
         searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
-                    val trimmedQuery = it.trim() //  Trim spaces
+                    val trimmedQuery = it.trim()
                     val index = nameList.indexOfFirst { skill -> skill.equals(trimmedQuery, ignoreCase = true) }
                     if (index != -1) {
                         val intent = Intent(this@Home, DetailedActivity::class.java)
@@ -212,13 +218,14 @@ class Home : AppCompatActivity() {
                 return false
             }
         })
+
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_notifications -> {
-                Toast.makeText(this, "No new notifications", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, NotificationsActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -234,7 +241,6 @@ class Home : AppCompatActivity() {
 
         backPressedOnce = true
         Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show()
-
-        backPressHandler.postDelayed({ backPressedOnce = false }, 2000) // 2 sec reset
+        backPressHandler.postDelayed({ backPressedOnce = false }, 2000)
     }
 }

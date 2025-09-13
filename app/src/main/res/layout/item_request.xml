@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_marginTop="34dp"
+     >
+
+    <!-- First Name -->
+    <TextView
+        android:id="@+id/req_from"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp"/>
+
+    <!-- Skill they want to learn -->
+    <TextView
+        android:id="@+id/req_skill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp" />
+
+    <!-- Skills they offer -->
+    <TextView
+        android:id="@+id/req_offers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btn_accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Accept"
+            android:backgroundTint="@color/teal_700"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/btn_reject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reject"
+            android:backgroundTint="@color/teal_700"
+            android:textColor="@color/white"
+            android:layout_marginStart="12dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#e0e0e0"/>
+</LinearLayout>

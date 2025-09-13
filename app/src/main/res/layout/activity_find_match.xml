@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Label for "Select skill you want to learn" -->
+        <TextView
+            android:id="@+id/learnSkillLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Select skill you want to learn"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="56dp"
+            android:padding="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- ChipGroup showing MyLearningWishlist (skills user wants to learn) -->
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/learnSkillsChipGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            app:singleSelection="true"
+            app:singleLine="false"
+            app:layout_constraintTop_toBottomOf="@id/learnSkillLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Skills you can teach section -->
+        <TextView
+            android:id="@+id/teachSkillsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Skills you wish to teach"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            app:layout_constraintTop_toBottomOf="@id/learnSkillsChipGroup"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- ChipGroup for skills you can teach -->
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/teachSkillsChipGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            app:singleLine="false"
+            app:singleSelection="false"
+            app:layout_constraintTop_toBottomOf="@id/teachSkillsLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Find Match button -->
+        <Button
+            android:id="@+id/findButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/teal_700"
+            android:text="Find Match"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/teachSkillsChipGroup" />
+
+        <!-- Progress bar -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:visibility="gone"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@id/teachSkillsChipGroup"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Animated "Searching..." -->
+        <TextView
+            android:id="@+id/searchingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Searching"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/progressBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Recycler for showing matches -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/matchesRecycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/findButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -19,10 +19,10 @@ class LogIn : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         // You can check here if user already logged in, then redirect to Home
-        // if (auth.currentUser != null) {
-        //     startActivity(Intent(this, Home::class.java))
-        //     finish()
-        // }
+         if (auth.currentUser != null) {
+             startActivity(Intent(this, Home::class.java))
+             finish()
+         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

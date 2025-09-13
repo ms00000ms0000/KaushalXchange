@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    tools:context=".ActiveCourses">
+
+    <!-- Header Row with Title and Trash Button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="4dp"
+        android:gravity="center_vertical"
+        android:background="@android:color/white"
+        android:elevation="2dp"
+        android:layout_marginTop="36dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Active Courses"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+
+        <ImageButton
+            android:id="@+id/btn_open_trash"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Open Trash"
+            android:padding="4dp"
+            android:src="@drawable/trash_icon" />
+    </LinearLayout>
+
+    <!-- RecyclerView for active courses -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_active_courses"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="12dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:clipToPadding="false"
+        android:layout_marginBottom="40dp"/>
+
+</LinearLayout>

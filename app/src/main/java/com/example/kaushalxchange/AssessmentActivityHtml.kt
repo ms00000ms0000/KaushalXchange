@@ -1,7 +1,7 @@
 package com.example.kaushalxchange
 
 import android.content.DialogInterface
-import android.content.SharedPreferences // <-- added
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.Button
@@ -18,14 +18,13 @@ class AssessmentActivityHtml : AppCompatActivity() {
     private lateinit var timerText: TextView
     private lateinit var countDownTimer: CountDownTimer
     private val userAnswers = IntArray(25) { -1 }
-    private var isSubmitted = false   // <-- added flag
-    private lateinit var sharedPreferences: SharedPreferences // <-- added
+    private var isSubmitted = false
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_assessment_html)
 
-        // <-- added SharedPreferences
         sharedPreferences = getSharedPreferences("KaushalXChangePrefs", MODE_PRIVATE)
 
         questions = loadQuestions()
@@ -44,7 +43,7 @@ class AssessmentActivityHtml : AppCompatActivity() {
             if (!isSubmitted) {
                 isSubmitted = true
                 evaluateAnswers()
-                questionAdapter.notifyDataSetChanged() // refresh to apply colors
+                questionAdapter.notifyDataSetChanged()
             }
         }
     }
@@ -56,7 +55,6 @@ class AssessmentActivityHtml : AppCompatActivity() {
                 val seconds = (millisUntilFinished / 1000) % 60
                 timerText.text = String.format("Time Left: %02d:%02d", minutes, seconds)
             }
-
             override fun onFinish() {
                 if (!isSubmitted) {
                     isSubmitted = true
@@ -71,24 +69,17 @@ class AssessmentActivityHtml : AppCompatActivity() {
         countDownTimer.cancel()
         var score = 0
         for (i in questions.indices) {
-            if (userAnswers[i] == questions[i].correctAnswerIndex) {
-                score++
-            }
+            if (userAnswers[i] == questions[i].correctAnswerIndex) score++
         }
 
-        // <-- New logic for My Skills and Skill I Can Teach
         val editor = sharedPreferences.edit()
-        val skillName = "HTML" // later you can make dynamic per skill
+        val skillName = "HTML"
 
-        if (score >= 15) {
-            addSkillToList("MySkills", skillName)
-        }
-        if (score >= 20) {
-            addSkillToList("SkillsICanTeach", skillName)
-        }
+        if (score >= 1) addSkillToList("MySkills", skillName)
+        if (score >= 2) addSkillToList("SkillsICanTeach", skillName)
         editor.apply()
 
-        val result = if (score >= 15) "Passed" else "Failed"
+        val result = if (score >= 1) "Passed" else "Failed"
         AlertDialog.Builder(this)
             .setTitle("Assessment Complete")
             .setMessage("Score: $score / 25\nResult: $result")
@@ -96,14 +87,11 @@ class AssessmentActivityHtml : AppCompatActivity() {
             .show()
     }
 
-    // <-- helper function to add skills in SharedPreferences list
     private fun addSkillToList(key: String, skill: String) {
         val skillsSet = sharedPreferences.getStringSet(key, mutableSetOf())?.toMutableSet() ?: mutableSetOf()
         skillsSet.add(skill)
         sharedPreferences.edit().putStringSet(key, skillsSet).apply()
     }
-
-
 
     private fun loadQuestions(): List<Question> {
         return listOf(

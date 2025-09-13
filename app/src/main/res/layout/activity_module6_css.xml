@@ -64,8 +64,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Next"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/app_color"
+                android:backgroundTint="@color/teal_700"
+                android:textColor="@color/white"
                 android:visibility="gone" />
 
             <Button
@@ -74,8 +74,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/submit"
-                android:textColor="@color/black"
-                android:backgroundTint="@color/app_color"
+                android:backgroundTint="@color/teal_700"
+                android:textColor="@color/white"
                 android:visibility="gone" />
         </LinearLayout>
 
@@ -85,8 +85,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Start Final Assessment"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/app_color"
+            android:backgroundTint="@color/teal_700"
+            android:textColor="@color/white"
             android:layout_marginTop="16dp"
             android:visibility="gone" />
     </LinearLayout>

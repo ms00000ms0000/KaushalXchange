@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
-    
+
 
 }
 
@@ -11,6 +11,7 @@ android {
     compileSdk = 35
     buildFeatures{
         viewBinding=true
+        dataBinding=true
 }
 
     defaultConfig {
@@ -73,9 +74,23 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 
+
+
     // Firebase Firestore
     implementation("com.google.firebase:firebase-firestore:25.1.1")
     implementation("com.google.firebase:firebase-firestore-ktx:25.1.1")
+
+    implementation("com.airbnb.android:lottie:6.4.0")
+
+
+    // Jitsi Meet SDK (from official repo, not JitPack)
+    implementation("org.jitsi.react:jitsi-meet-sdk:8.2.2")
+
+    // Lifecycle
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
+    implementation("androidx.activity:activity-ktx:1.9.3")
+
+
 }
 
 
