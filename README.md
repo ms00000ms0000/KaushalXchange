@@ -90,23 +90,23 @@ The application is designed following the **MVVM (Model–View–ViewModel)** ar
 
 📦 Kaushal-XChange
 │
-├── app/src/main/java/com/example/kaushalxchange/                                                 # Kotlin Source Files
-│ ├── activities/                                                                                 # All app activities (Login, Home, etc.)
-│ ├── adapters/                                                                                   # RecyclerView Adapters
-│ ├── fragments/                                                                                  # Skill and user interface fragments
-│ ├── models/                                                                                     # Data models (Skill, User, Match)
-│ ├── viewmodels/                                                                                 # MVVM ViewModels for UI logic
-│ └── utils/                                                                                      # Helper utilities and constants
+├── app/src/main/java/com/example/kaushalxchange/                   # Kotlin Source Files
+│ ├── activities/                                                   # All app activities (Login, Home, etc.)
+│ ├── adapters/                                                     # RecyclerView Adapters
+│ ├── fragments/                                                    # Skill and user interface fragments
+│ ├── models/                                                       # Data models (Skill, User, Match)
+│ ├── viewmodels/                                                   # MVVM ViewModels for UI logic
+│ └── utils/                                                        # Helper utilities and constants
 │
-├── app/src/main/res/                                                                             # XML resources
-│ ├── layout/                                                                                     # XML UI layouts
-│ ├── drawable/                                                                                   # Images, icons, shapes
-│ ├── values/                                                                                     # Colors, strings, themes
+├── app/src/main/res/                                               # XML resources
+│ ├── layout/                                                       # XML UI layouts
+│ ├── drawable/                                                     # Images, icons, shapes
+│ ├── values/                                                       # Colors, strings, themes
 │
-├── build.gradle (Project)                                                                        # Global dependencies
-├── build.gradle (App)                                                                            # App-level dependencies
-├── AndroidManifest.xml                                                                           # App manifest
-└── README.md                                                                                     # Project documentation
+├── build.gradle (Project)                                          # Global dependencies
+├── build.gradle (App)                                              # App-level dependencies
+├── AndroidManifest.xml                                             # App manifest
+└── README.md                                                       # Project documentation
 
 ```
 ---
